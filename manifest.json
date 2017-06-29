@@ -1,0 +1,35 @@
+{
+  "manifest_version": 2,
+  "name": "Waffle Colorizer",
+  "description": "Change colors for projects in a single compiled board.",
+  "version": "0.1",
+  "author": "goalves",
+  "icons": {
+    "16": "images/icons/icon_16.png",
+    "48": "images/icons/icon_48.png"
+  },
+  "browser_action": {
+    "default_icon": {
+      "19": "images/icons/icon_19.png",
+      "38": "images/icons/icon_38.png"
+    },
+    "default_title": "Colorize Waffle.io",
+    "default_popup": "./popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://waffle.io/*",
+        "http://waffle.io/*"
+      ],
+      "js": ["./libs/jquery-3.2.1.min.js","./content-scripts.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "permissions": [
+    "http://waffle.io/*",
+    "https://waffle.io/*",
+    "tabs"
+  ],
+  "manifest_version": 2
+}
