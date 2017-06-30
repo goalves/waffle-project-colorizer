@@ -1,37 +1,37 @@
 function colorize() {
-  card_project_div = $(this).find('div.source-name.ng-scope')
-  card_number_div = $(this).find('button.card-number.btn.btn-link.btn-xs')
-  card_project = card_project_div.text()
+  cardProjectDiv = $(this).find('div.source-name.ng-scope')
+  cardNumberDiv = $(this).find('button.card-number.btn.btn-link.btn-xs')
+  cardProject = cardProjectDiv.text()
 
-  if(typeof localStorage[card_project] == "undefined") {
-    localStorage[card_project] = generate_random_pastel_color()
+  if(typeof localStorage[cardProject] == "undefined") {
+    localStorage[cardProject] = generateRandomPastelColor()
   }
 
-  color = localStorage[card_project]
+  color = localStorage[cardProject]
   $(this).css('background-color',color)
-  card_project_div.css('color',"#333333")
-  card_number_div.css('color',"#333333")
+  cardProjectDiv.css('color',"#333333")
+  cardNumberDiv.css('color',"#333333")
 }
 
-function rgb_to_hex(r, g, b) {
+function rgbToHex(r, g, b) {
   var rgb = b | (g << 8) | (r << 16);
   return "#" + rgb.toString(16);
 }
 
-function generate_random_pastel_color(){
+function generateRandomPastelColor(){
   red = Math.floor(Math.random() * 255);
   green = Math.floor(Math.random() * 255);
   blue = Math.floor(Math.random() * 255);
 
-  mix_red = 255
-  mix_green = 255
-  mix_blue = 255
+  mixRed = 255
+  mixGreen = 255
+  mixBlue = 255
 
-  red = (red + mix_red) / 2
-  green = (green + mix_green) / 2
-  blue = (blue + mix_blue) / 2
+  red = (red + mixRed) / 2
+  green = (green + mixGreen) / 2
+  blue = (blue + mixBlue) / 2
 
-  return rgb_to_hex(red, green, blue)
+  return rgbToHex(red, green, blue)
 }
 
 function start(){
