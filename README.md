@@ -4,7 +4,7 @@ Chrome Extension to add colors to different projects that are being represented 
 ## How to install:
 To install you need to go through these steps:
 1. Download the latest version from the [releases](https://github.com/goalves/waffle-project-colorizer/releases "WPC-Releases") section of this repository.
-2. Open chrome extensions settings (chrome://extensions/) and just drag and drop the `waffle-project-colorizer.cxr` file.
+2. Open chrome extensions settings (chrome://extensions/) and just drag and drop the `*.cxr` file that was downloaded.
 
 ## How to use:
 Currently this version automatically starts working once you open a board in Waffle.
