@@ -9,6 +9,3 @@ To install you need to go through these steps:
 ## How to use:
 Currently this version automatically starts working once you open a board in Waffle.
 It is still possible to change the color of all cards clicking in the painting palette added to your other chrome extensions.
-
-## Reminders:
-This project is still in its initial development stage. :)
