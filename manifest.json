@@ -8,14 +8,6 @@
     "16": "images/icons/icon_16.png",
     "48": "images/icons/icon_48.png"
   },
-  "browser_action": {
-    "default_icon": {
-      "19": "images/icons/icon_19.png",
-      "38": "images/icons/icon_38.png"
-    },
-    "default_title": "Colorize Waffle.io",
-    "default_popup": "./popup.html"
-  },
   "content_scripts": [
     {
       "matches": [
@@ -28,8 +20,7 @@
   ],
   "permissions": [
     "http://waffle.io/*",
-    "https://waffle.io/*",
-    "tabs"
+    "https://waffle.io/*"
   ],
   "manifest_version": 2
 }
