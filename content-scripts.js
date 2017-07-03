@@ -4,7 +4,7 @@ function colorize() {
   cardProject = cardProjectDiv.text()
 
   if(typeof localStorage[cardProject] == "undefined") {
-    localStorage[cardProject] = colorByHashCode(cardProject)
+    localStorage[cardProject] = getColor(cardProject)
   }
   color = localStorage[cardProject]
   $(this).css('background-color',color)
@@ -12,32 +12,61 @@ function colorize() {
   cardNumberDiv.css('color',"#333333")
 }
 
-function colorByHashCode(value) {
-    hash = hashCode(value)
-    return toHSL(hash)
+function getColor(cardProject) {
+  var color = availableColors[projectCount]
+  projectCount++
+  return "hsl(" + color + ",100%,85%)";
 }
 
-function hashCode(str) {
-    var hash = 0;
-    for (var i = 0; i < str.length; i++) {
-       hash = str.charCodeAt(i) + ((hash << 5) - hash);
+function calculateColorHues(){
+  if(projectCount > 1){
+    startPoint = (360/projectCount)/2
+    number = 360/(projectCount)
+    for(i = startPoint; i <= 360; i = i+number){
+      availableColors.push(Math.floor(i))
     }
-    return hash;
+  }
 }
 
-function toHSL(value) {
-    var shortened = value % 360;
-    return "hsl(" + shortened + ",100%,85%)";
-};
+function checkNewProject() {
+  cardProjectDiv = $(this).find('div.source-name.ng-scope')
+  cardProject = cardProjectDiv.text()
 
-function start(){
-  $('.card-header').each(colorize);
+  if(!isInArray(cardProject, projectsList)) {
+    projectsList.push(cardProject)
+    projectCount++
+  }
+}
+
+function isInArray(value, array) {
+  return array.indexOf(value) > -1;
 }
 
 var observer = new MutationObserver(function (MutationRecords, MutationObserver) {
-    start();
+  start();
 });
 
 observer.observe($('body').get(0), {
   childList: true,
 });
+
+function start(){
+  //Clear previous data
+  localStorage.clear()
+  projectsList = []
+  availableColors = []
+  projectCount = 0
+
+  //Get info from card-headers
+  $('.card-header').each(checkNewProject)
+  calculateColorHues(projectCount)
+  console.log(availableColors)
+  projectCount = 0
+
+  //Colorize
+  $('.card-header').each(colorize)
+}
+
+var availableColors = []
+var projectsList = []
+var projectCount = 0;
