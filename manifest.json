@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
   "name": "Waffle Colorizer",
-  "description": "Change colors for projects in a single compiled board.",
-  "version": "0.1",
+  "description": "Change colors for a compiled board of projects in waffle.",
+  "version": "0.2",
   "author": "goalves",
   "icons": {
     "16": "images/icons/icon_16.png",
@@ -21,6 +21,5 @@
   "permissions": [
     "http://waffle.io/*",
     "https://waffle.io/*"
-  ],
-  "manifest_version": 2
+  ]
 }
