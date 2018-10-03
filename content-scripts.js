@@ -2,7 +2,7 @@ var availableColors = []
 var projectsList = []
 var projectCount = 0
 
-function colorize () {
+function colorize() {
   var cardProjectDiv = $(this).find('div.source-name.ng-scope')
   var cardNumberDiv = $(this).find('button.card-number.btn.btn-link.btn-xs')
   var cardProject = cardProjectDiv.text()
@@ -17,13 +17,13 @@ function colorize () {
   cardNumberDiv.css('color', '#333333')
 }
 
-function getColor (cardProject) {
+function getColor(cardProject) {
   var color = availableColors[projectCount]
   projectCount++
   return 'hsl(' + color + ',100%,85%)'
 }
 
-function calculateColorHues () {
+function calculateColorHues() {
   if (projectCount > 1) {
     var startPoint = (360 / projectCount) / 2
     var number = 360 / (projectCount)
@@ -34,7 +34,7 @@ function calculateColorHues () {
   }
 }
 
-function checkNewProject () {
+function checkNewProject() {
   var cardProjectDiv = $(this).find('div.source-name.ng-scope')
   var cardProject = cardProjectDiv.text()
 
@@ -44,7 +44,7 @@ function checkNewProject () {
   }
 }
 
-function isInArray (value, array) {
+function isInArray(value, array) {
   return array.indexOf(value) > -1
 }
 
@@ -56,15 +56,21 @@ observer.observe($('body').get(0), {
   childList: true
 })
 
-function cleanup () {
+function cleanup() {
   localStorage.clear()
   projectsList = []
   availableColors = []
   projectCount = 0
 }
 
-function start () {
+function setDarkMode() {
+  document.getElementById("project-ct").classList.add("dark-theme")
+}
+
+function start() {
   cleanup()
+
+  setDarkMode()
 
   $('.card-header').each(checkNewProject)
   calculateColorHues(projectCount)
