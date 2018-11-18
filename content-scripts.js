@@ -68,8 +68,6 @@ function setDarkMode() {
 }
 
 function start() {
-  cleanup()
-
   setDarkMode()
 
   $('.card-header').each(checkNewProject)
